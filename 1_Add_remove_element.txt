@@ -1,0 +1,42 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+'''
+Dodawanie i usuwanie elementów w serwisie internetowym.
+Wykorzystanie np. w testach sklepów internetowych - dodawanie/usuwanie elementów z koszyka.
+'''
+
+page = 'http://the-internet.herokuapp.com/add_remove_elements/'
+
+browser = webdriver.Chrome()
+browser.maximize_window()
+browser.implicitly_wait(15)
+browser.get(page)
+
+# Funkcja obsługi przycisku Add Element
+def add_element():
+    example = browser.find_element(By.CLASS_NAME, 'example')
+    add_button = example.find_element(By.TAG_NAME, 'button')
+    time.sleep(1)
+    add_button.click()
+
+# Trzykrotne wykonanie funkcji add_element
+for i in range(3):
+    add_element()
+
+time.sleep(2)                                            # Oczekiwanie na wyświetlenie wszystkich przycisków Delete
+elements = browser.find_element(By.ID, 'elements')       # Sekcja z przyciskami Delete
+
+# Funkcja obsługi przycisku Delete
+def remove_button():
+    delete_button = elements.find_elements(By.TAG_NAME, 'button')       # Wyszukanie wszystkich pasujących elementów
+    print('Liczba przycisków Delete', len(delete_button))
+    delete_button[1].click()                                            # Usunięcie drugiego przycisku Delete
+
+# Wywołanie funkcji kliknięcia w przycisk Delete
+remove_button()
+
+
+
+
