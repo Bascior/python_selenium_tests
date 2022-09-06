@@ -1,0 +1,25 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+'''
+Log in process - positive path. 
+Use username and password to log into your page account.
+'''
+
+page = 'http://the-internet.herokuapp.com/login'
+user = 'tomsmith'
+password = 'SuperSecretPassword!'
+
+browser = webdriver.Chrome()
+browser.maximize_window()
+browser.implicitly_wait(15)
+browser.get(page)
+
+browser.find_element(By.ID, 'username').send_keys(user)             # Find username input and enter your username
+browser.find_element(By.ID, 'password').send_keys(password)         # Find password input and enter your password
+
+browser.find_element(By.TAG_NAME, 'button').click()                 # Find login button and click it
+
+alert = browser.find_element(By.ID, 'flash').text                   # Get text from the alert message
+print(alert)
