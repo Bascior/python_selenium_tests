@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 
 '''
-Uplod a file using input.
+Uplod a file.
 '''
 
 page = 'http://the-internet.herokuapp.com/upload'
