@@ -15,8 +15,6 @@ from selenium.webdriver.common.keys import Keys
 '''
 
 page = 'https://demo.seleniumeasy.com/bootstrap-date-picker-demo.html'
-
-# Variables
 date_sample = '07.06.2022'
 
 browser = webdriver.Chrome()
